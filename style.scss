@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  // border: 1px solid;
+  outline: none;
+}
+
+@mixin flex($justify, $align) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+$dark-background-primary: #1E1E1E;
+$dark-heading-color-primary: #BABABA;
+$dark-heading-color-secondary: #7C7C7C;
+$dark-para-color-primary: #AAAAAA;
+$dark-para-color-secondary: #3b3b3b;
+$dark-button-color-primary: #BABABA;
+$dark-image-background-primary: #2D2D2D;
+
+h1,h2,h3,h4,h5,h6{
+  font-family: 'Roboto', sans-serif;
+}
+
+blockquote,button{
+  font-family: 'Roboto', sans-serif;
+}
+
+.container{
+  width: 100%;
+  height: 100vh;
+  background: $dark-background-primary;
+  @include flex(center, center);
+
+  .box{
+    position: relative;
+    width: 80%;
+    height: 80%;
+    @include flex(center, flex-start);
+    flex-direction: column;
+
+    .transition-effect{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transform: translateX(-101%);
+      animation: transition-anim-1 2s cubic-bezier(0.7, 0.08, 0.18, 0.98) forwards;
+    }
+
+    .image-box{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 35%;
+      height: 100%;
+      overflow: hidden;
+
+      .transition-effect{
+        transform: translateX(0);
+        background: $dark-image-background-primary;
+        animation: image-transition-anim-1 2s cubic-bezier(0.7, 0.08, 0.18, 0.98) forwards;
+        z-index: 10;
+      }
+
+      img{
+        transform: translate(0%,0%);
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        animation: img-transition-anim-1 2s cubic-bezier(0.7, 0.08, 0.18, 0.98) forwards;
+      }
+    }
+
+    .title-box{
+      position: relative;
+      left: 30%;
+      margin: 5vmin 0;
+      @include flex(center, flex-end);
+      flex-direction: column;
+      text-align: right;
+
+      h1{
+        position: relative;
+        color: $dark-heading-color-primary;
+        padding: 0.2vmin 1.5vmin;
+        font-size: 6vmin;
+        overflow: hidden;
+
+        .transition-effect{
+          background: $dark-heading-color-primary;
+          z-index: 20;
+        }
+      }
+
+      h5{
+        position: relative;
+        color: $dark-heading-color-secondary;
+        padding: 0.2vmin 1.5vmin;
+        font-size: 2.5vmin;
+        overflow: hidden;
+
+        .transition-effect{
+          background: $dark-heading-color-secondary;
+          z-index: 20;
+        }
+      }
+    }
+
+    .quote-box{
+      position: relative;
+      left: 40%;
+      max-width: 60%;
+      margin: 5vmin 0;
+
+      blockquote{
+        position: relative;
+        color: $dark-para-color-primary;
+        padding: 0.2vmin 1.5vmin;
+        font-size: 3.5vmin;
+        font-weight: 200;
+        font-style: italic;
+        line-height: 5vmin;
+        overflow: hidden;
+
+        .transition-effect{
+          background: $dark-para-color-secondary;
+          z-index: 20;
+        }
+      }
+    }
+
+    .button-box{
+      position: relative;
+      left: 40%;
+      margin: 5vmin 0;
+      padding: 0.2vmin 1.5vmin;
+      
+
+      button{
+        padding: 0.5vmin 1.5vmin;
+        font-size: 2.5vmin;
+        background: transparent;
+        color: $dark-button-color-primary;
+        border: 0.2vmin solid $dark-button-color-primary;
+        border-radius: 1vmin;
+        cursor: pointer;
+      }
+
+      .random{
+        margin-right: 2vmin;
+      }
+    }
+  }
+}
+
+@keyframes transition-anim-1{
+  0%{
+    transform: translateX(0);
+  }
+  50%{
+    transform: translateX(0);
+  }
+  100%{
+    transform: translateX(101%);
+  }
+}
+
+
+
+@keyframes image-transition-anim-1{
+  0%{
+    transform: translateX(0);
+  }
+  5%{
+    transform: translateX(0);
+  }
+  100%{
+    transform: translateX(-101%);
+  }
+}
+
+
+
+@keyframes img-transition-anim-1{
+  0%{
+    transform: scale(1);
+  }
+  50%{
+    transform: scale(1);
+  }
+  100%{
+    transform: scale(1.1);
+  }
+}
